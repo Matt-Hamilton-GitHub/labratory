@@ -1,20 +1,11 @@
 import React from 'react'
 
-function Item(props) {
-    console.log(props);
+function Item({name, age}) {
     return (
-        <div>
-            {props.map((person,idx)=>{
-                const [name,age] = person;
-                
-                return(
-                    <div key={idx}>
-                        <h1>{name}</h1>
-                        <p>{age}</p>
-                    </div>
-                )
-            })}
-        </div>
+             <div >
+                <h1>{name}</h1>
+                <p>{age}</p>
+            </div>
     )
 }
 

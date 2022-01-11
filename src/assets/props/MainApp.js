@@ -1,5 +1,5 @@
 import React from 'react'
-import Item from './Item'
+import Items from './Items'
 
 function MainApp() {
 
@@ -16,7 +16,7 @@ const arr = [
 
     return (
         <div>
-            <Item {...arr} />
+            <Items title='person' arr={arr} />
         </div>
     )
 }

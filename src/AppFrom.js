@@ -1,4 +1,4 @@
-import Reat, {useState} from  'react'
+import {useState} from  'react'
 
 function AppForm () {
 
@@ -23,7 +23,7 @@ function AppForm () {
         }
 
     
-
+console.log(people);
     return (
 
 <>
@@ -52,10 +52,11 @@ function AppForm () {
 
     
     {people.map((person)=>{
+    
          const {firstName, email, id} = person;
 
         return(
-            <div id={id} className='item'>
+            <div key={id} className='item'>
                 <p>{id}</p>
                 <h4>{firstName}</h4>
                 <p>{email}</p>
