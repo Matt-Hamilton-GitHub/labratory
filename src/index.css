@@ -172,6 +172,7 @@ p {
 .item {
   background: var(--clr-white);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   max-width: var(--fixed-width);
   margin: 2rem auto;
@@ -212,6 +213,8 @@ p {
   color: var(--clr-red-dark);
 }
 .form {
+  display: flex;
+  flex-direction: column;
   background: var(--clr-white);
   max-width: var(--fixed-width);
   margin: 0 auto;
@@ -224,6 +227,9 @@ p {
   border-color: transparent;
   border-radius: var(--radius);
   padding: 0.25rem 0.5rem;
+}
+form label{
+  padding: 5px;
 }
 .form-control {
   margin: 0.5rem 0;
@@ -242,6 +248,13 @@ p {
   text-transform: capitalize;
   border-radius: var(--radius);
   cursor: pointer;
+}
+
+form .input-error{
+  color:red;
+  background-color: grey;
+  text-align: center;
+
 }
 .nav-links {
   max-width: var(--fixed-width);

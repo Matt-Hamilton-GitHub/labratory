@@ -2,67 +2,84 @@ import {useState} from  'react'
 
 function AppForm () {
 
-    const [firstName, setFirstName] = useState('');
-    const [email, setEmail] = useState('');
+const [dob, setDOB] = useState('')
+const [name, setName] = useState('')
+const [ssn, setSSN] = useState('')
+const [isInputError, setInputError] = useState(false)
 
+const [users,setUsers] = useState([])
+console.log(`${name} ${dob} ${ssn}`);
 
-    const [people, setPeople] = useState([]);
-
-    const submitForm =(e)=>{
-        e.preventDefault();
-        if(firstName && email){
-            const person = {id:new Date().getTime().toString(), firstName, email};
-            setPeople((people)=>{
-                return [...people, person];
-            })
-            setFirstName('');
-            setEmail('');
-        }else{
-            console.log('empty')
-        }
-        }
-
+const handleSubmit = (e)=>{
+    e.preventDefault()
+    console.log();
+    let newUser = {id: new Date().getTime(),name: name,dob:dob,ssn:ssn}
     
-console.log(people);
+    if(name && ssn && dob){
+        setUsers([...users,newUser])
+        setDOB('');
+        setName('');
+        setSSN('');
+        console.log(users);
+    }else{
+        setInputError(true)
+        setTimeout(function(){
+            setInputError(false)
+        },3000)
+}
+
+}
+
+
+
     return (
 
 <>
 <article>
-    <form className='form' onSubmit={submitForm}>
-        <div className='form-control'>
-            <label htmlFor='firstName'>Name:</label>
-            <input type='text'
-                   id='firstName'
-                   name='firstName'
-                   value={firstName}
-                   onChange={(e)=>setFirstName(e.target.value)}></input>
-        </div>
-        <div className='form-control'>
-            <label  htmlFor='email'>Email:</label>
-            <input type='text'
-                   id='email'
-                   name='email'
-                   value={email}
-                   onChange={(e)=>setEmail(e.target.value)}
-                   ></input>
-        </div>
-        <button type='submit' > add person</button>
 
+    
+    <form className='form' onSubmit={handleSubmit}>
+        
+    {isInputError ? <span className='input-error'>Invalid Input</span> : null}
+        <label >Name</label>
+        <input 
+        type='text'
+        name='name'
+        value={name}
+        onChange={(e)=>{setName(e.target.value)}} />
+
+        <label >Date of Birth</label>
+        <input 
+        type='date'
+        name='dob'
+        value={dob}
+        onChange={(e)=>{setDOB(e.target.value)}} />
+
+        <label >Social Security Number</label>
+        <input 
+        type='password'
+        pattern='[0-9]*'
+        inputMode='numeric'
+        name='ssn'
+        value={ssn}
+        onChange={(e)=>{setSSN(e.target.value)}} />
+
+        <button>Submit</button>
     </form>
 
+    {users.map((person)=>{
     
-    {people.map((person)=>{
-    
-         const {firstName, email, id} = person;
+    const {name, ssn,dob, id} = person;
 
-        return(
-            <div key={id} className='item'>
-                <p>{id}</p>
-                <h4>{firstName}</h4>
-                <p>{email}</p>
-            </div>
-        )
-    })}
+   return(
+       <div key={id} className='item'>
+           <h4>{name}</h4>
+           <p>{ssn}</p>
+           <p>{dob}</p>
+       </div>
+   )
+})}
+   
 </article>
 </>
 
