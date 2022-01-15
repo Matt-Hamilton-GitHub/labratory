@@ -5,6 +5,7 @@ function AppForm () {
 const [dob, setDOB] = useState('')
 const [name, setName] = useState('')
 const [ssn, setSSN] = useState('')
+const [email, setEmail] = useState('')
 const [isInputError, setInputError] = useState(false)
 
 const [users,setUsers] = useState([])
@@ -29,7 +30,6 @@ const handleSubmit = (e)=>{
 }
 
 }
-
 
 
     return (
