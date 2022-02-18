@@ -16,6 +16,7 @@ const handleSubmit = (e)=>{
     console.log();
     let newUser = {id: new Date().getTime(),name: name,dob:dob,ssn:ssn}
     
+
     if(name && ssn && dob){
         setUsers([...users,newUser])
         setDOB('');
@@ -24,9 +25,11 @@ const handleSubmit = (e)=>{
         console.log(users);
     }else{
         setInputError(true)
-        setTimeout(function(){
+        setTimeout(function()
+        {
+
             setInputError(false)
-        },3000)
+        },4000)
 }
 
 }
@@ -41,7 +44,7 @@ const handleSubmit = (e)=>{
     <form className='form' onSubmit={handleSubmit}>
         
     {isInputError ? <span className='input-error'>Invalid Input</span> : null}
-        <label >Name</label>
+        <label > Name </label>
         <input 
         type='text'
         name='name'
