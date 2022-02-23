@@ -2,26 +2,29 @@ import {useState} from  'react'
 
 function AppForm () {
 
+   
 const [dob, setDOB] = useState('')
 const [name, setName] = useState('')
 const [ssn, setSSN] = useState('')
+const [color, setColor] = useState('')
 const [email, setEmail] = useState('')
 const [isInputError, setInputError] = useState(false)
 
 const [users,setUsers] = useState([])
-console.log(`${name} ${dob} ${ssn}`);
+console.table(users);
 
 const handleSubmit = (e)=>{
     e.preventDefault()
     console.log();
-    let newUser = {id: new Date().getTime(),name: name,dob:dob,ssn:ssn}
+    let newUser = {id: new Date().getTime(),name: name,dob:dob,ssn:ssn, color: color}
     
 
-    if(name && ssn && dob){
+    if(name && ssn && dob && color){
         setUsers([...users,newUser])
         setDOB('');
         setName('');
         setSSN('');
+        setColor('')
         console.log(users);
     }else{
         setInputError(true)
@@ -29,7 +32,7 @@ const handleSubmit = (e)=>{
         {
 
             setInputError(false)
-        },4000)
+        },3000)
 }
 
 }
@@ -66,6 +69,14 @@ const handleSubmit = (e)=>{
         name='ssn'
         value={ssn}
         onChange={(e)=>{setSSN(e.target.value)}} />
+
+        <label >Color</label>
+        <input 
+        type='color'
+        name='color'
+        value={color}
+        onChange={(e)=>{setColor(e.target.value)}} />
+
 
         <button>Submit</button>
     </form>
