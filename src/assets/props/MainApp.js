@@ -16,7 +16,7 @@ const arr = [
 
     return (
         <div>
-            <Items title='person' arr={arr} />
+            {/* <Items title='person' arr={arr} /> */}
         </div>
     )
 }

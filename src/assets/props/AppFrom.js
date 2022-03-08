@@ -1,4 +1,5 @@
 import {useState} from  'react'
+import {IoIosCloseCircle}from 'react-icons/io'
 
 function AppForm () {
 
@@ -35,6 +36,11 @@ const handleSubmit = (e)=>{
         },3000)
 }
 
+}
+
+
+const filerArray=(id)=>{
+    setUsers(users.filter(user => user.id !== id))
 }
 
 
@@ -83,13 +89,16 @@ const handleSubmit = (e)=>{
 
     {users.map((person)=>{
     
-    const {name, ssn,dob, id} = person;
+    const {name, ssn,dob,color, id} = person;
 
    return(
-       <div key={id} className='item'>
-           <h4>{name}</h4>
+       <div 
+       key={id} 
+       className='item'>
+           <h4 style={{color:color}}>{name}</h4>
            <p>{ssn}</p>
            <p>{dob}</p>
+           <span onClick={()=>{filerArray(id)}}><IoIosCloseCircle style={{cursor:'pointer'}} size={20}/></span>
        </div>
    )
 })}
