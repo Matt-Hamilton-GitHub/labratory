@@ -47,9 +47,8 @@ const filerArray=(id)=>{
     return (
 
 <>
-<article>
+<article >
 
-    
     <form className='form' onSubmit={handleSubmit}>
         
     {isInputError ? <span className='input-error'>Invalid Input</span> : null}

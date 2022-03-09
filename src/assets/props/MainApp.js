@@ -15,7 +15,7 @@ const arr = [
 ]
 
     return (
-        <div>
+        <div data-aos="fade-up">
             {/* <Items title='person' arr={arr} /> */}
         </div>
     )
