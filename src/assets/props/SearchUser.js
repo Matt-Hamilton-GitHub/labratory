@@ -15,12 +15,19 @@ const SearchUser = () => {
      age: 23}
   ]
   
-  const [isUsers,setUsers] = useState(arr)
+  const [isUsers,setUsers] = useState([])
   const [isUserName, setUserName] = useState('')
+
+const searchUser = (e) =>{
+  e.preventDefault();
+  const newArray = arr.filter( user => user.name === isUserName)
+  setUsers(newArray)
+
+}
 
   return (
     <section className='section-users'>
-      <form >
+      <form onSubmit={searchUser}>
         <input 
         type='text'
         name='isUserName' 
@@ -28,7 +35,15 @@ const SearchUser = () => {
         onChange={(e)=>{setUserName(e.target.value)}}
         ></input>
       </form>
-      <div>{isUserName}</div>
+      <div>
+        {
+          isUsers.map((user)=>{
+            return(
+              <h1>{user.name}</h1>
+            )
+          })
+        }
+      </div>
     </section>
     
   )
