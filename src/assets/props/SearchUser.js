@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, {useState} from 'react'
 
 
@@ -23,6 +24,12 @@ const searchUser = (e) =>{
   const newArray = arr.filter( user => user.name === isUserName)
   setUsers(newArray)
 
+}
+
+
+const fetchData =()=>{
+  const req = await axios.get('/users/get-data')
+  console.table(req.data)
 }
 
   return (
