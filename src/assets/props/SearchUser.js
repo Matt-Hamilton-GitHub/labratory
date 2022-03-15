@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 
 
@@ -27,10 +27,19 @@ const searchUser = (e) =>{
 }
 
 
-const fetchData =()=>{
-  const req = await axios.get('/users/get-data')
-  console.table(req.data)
+const fetchData = async()=>{
+  const req = await axios.get('/users/get-data/')
+  // const response = await fetch('https://dry-temple-96048.herokuapp.com/users/get-data');
+  // const data = await response.json();
+  // console.table(data)
 }
+
+
+
+useEffect(()=>{
+  fetchData();
+},[])
+
 
   return (
     <section className='section-users'>

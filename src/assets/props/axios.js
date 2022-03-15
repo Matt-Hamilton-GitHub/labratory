@@ -1,5 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL = 'https://tinder-back-end-mh.herokuapp.com'
+    baseURL: "https://dry-temple-96048.herokuapp.com",
 })
+
+export default instance;
