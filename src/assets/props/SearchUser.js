@@ -28,10 +28,12 @@ const searchUser = (e) =>{
 
 
 const fetchData = async()=>{
-  const req = await axios.get('/users/get-data/')
-  // const response = await fetch('https://dry-temple-96048.herokuapp.com/users/get-data');
-  // const data = await response.json();
-  // console.table(data)
+  const response = await fetch('http://localhost:1020/users/get-data/')
+  //  const response = await fetch('https://labratory-testing-server.herokuapp.com/users/get-data/')
+  const data = await response.json();
+  setUsers(data)
+  console.table(data)
+
 }
 
 
